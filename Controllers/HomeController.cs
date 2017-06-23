@@ -32,8 +32,7 @@ namespace CoreAuth.Controllers
                     Id = 3,
                     Author = "Jordan Walke",
                     Text = "This is *another* comment"
-                }
-                    
+                },
             };
         }
         // GET
@@ -47,6 +46,15 @@ namespace CoreAuth.Controllers
         public ActionResult Comments()
         {
             return Json(_comments);
+        }
+
+        [Route("comments/new")]
+        [HttpPost]
+        public ActionResult AddComment(CommentModel comment)
+        {
+            comment.Id = _comments.Count + 1;
+            _comments.Add(comment);
+            return Content("Success :)");
         }
     }
 }
