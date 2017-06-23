@@ -50,7 +50,12 @@ namespace CoreAuth
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-            }    
+            } 
+            
+            app.UseReact(config =>
+            {
+
+            });
 
             app.UseStaticFiles();
 
@@ -61,10 +66,7 @@ namespace CoreAuth
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            app.UseReact(config =>
-            {
-
-            });
+            
         }
     }
 }
